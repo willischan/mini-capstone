@@ -1,0 +1,28 @@
+<h1>Product #<%=@product.id%></h1>
+  <div class="row">
+      <div class="col-sm-4">
+        <div class="card" style="width: 20rem;">
+          <% @product.images.each do |image| %>
+            <img class="card-img-top" src="<%=image.url%>" alt="No Image Found">
+            </br>
+          <% end %>
+          <div class="card-body">
+            <h3 class="card-title"><a href="/products/<%=@product.id%>"><%=@product.name%></a></h3>
+            <h5>Supplied by: <%= @product.supplier.name %></h5>
+            </br>
+            <p class="card-text">Description: <%=@product.description%></p>
+            <p class="card-text">Price: <%=number_to_currency(@product.price)%></p>
+            <p class="card-text">Tax:   <%=number_to_currency(@product.tax)%></p>
+            <p class="card-text">Total: <%=number_to_currency(@product.total)%></p>
+            <p class="card-text"><%=@product.sale_message%></p>
+             <a href="/products/<%=@product.id%>/edit" class="btn btn-primary">Edit Product?</a>
+            <a data-confirm="Are you sure?" data-method="delete" rel="nofollow" href="/products/<%=@product.id%>" class="btn btn-primary">Delete Product?</a>
+            </br>
+            </br>
+            <p>Added <%=@product.friendly_created_at%></p>
+            </br>
+            <a href="/products">Return back to all products</a>
+          </div>
+        </div>
+      </div>
+  </div> 
